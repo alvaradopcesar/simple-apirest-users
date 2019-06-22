@@ -7,28 +7,16 @@ Apirest simple of users with go (golang) and mysql
 
 </center>
 
-#### INSTALLATION & CONFIGURATION
+#### CONFIGURATION
+
+* create database with the file `database.sql`
+* Edit the values ​​of the constants
 
 ```go
-type Database struct {
-    User string `json:"user"`
-    Dbname string `json:"dbname"`
-    Password string `json:"password"`
-}
-
-func DatabaseConfig() *sql.DB {
-    var database Database
-    database.User = "root"
-    database.Dbname = "apirest_users"
-    database.Password = "lavidaesunasola2018"
-
-    db, err := sql.Open("mysql", fmt.Sprinf("%s:%s@/%s?charset=utf8", database.User, database.Dbname, database.Password))
-
-    if err != nil {
-        log.Fatal("Error al conectar a la database: ", err.Error())
-    }
-
-    return db
-}
-
+const (
+    user     = ""
+    password = ""
+    dbname   = "apirest_users"
+)
 ```
+* Execute `go run main.go`
