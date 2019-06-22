@@ -1,0 +1,13 @@
+DROP DATABASE IF EXISTS apirest_users;
+
+CREATE DATABASE IF NOT EXISTS apirest_users;
+
+USE apirest_users;
+
+CREATE TABLE users (
+    id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    fullname VARCHAR(100) NOT NULL,
+    paternal VARCHAR(100) NOT NULL,
+    maternal VARCHAR(100) NOT NULL,
+    email VARCHAR(200) NOT NULL UNIQUE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

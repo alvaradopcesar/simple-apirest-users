@@ -1,0 +1,16 @@
+# Binaries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Testing
+*.test
+
+# Output of LiteIDE
+*.out
+
+# Go Patch
+/vendor/
+/Godeps/
