@@ -3,7 +3,7 @@ package routes
 import (
 	"net/http"
 
-	"github.com/wilian1808/simple-apirest-users/controllers"
+	"github.com/wilian1808/apirest-users/controllers"
 )
 
 // DeleteRoute func

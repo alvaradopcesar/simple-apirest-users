@@ -1,5 +1,5 @@
 ## API REST SIMPLE USERS
-Apirest simple of users with go (golang) and mysql
+Apirest simple of users with go (golang) and mysql.
 
 <center>
 
@@ -7,10 +7,17 @@ Apirest simple of users with go (golang) and mysql
 
 </center>
 
+#### INSTALLATION
+Execute:
+* `git clone https://github.com/wilian1808/simple-apirest-users.git`
+* `cd apirest-users`
+
+**Note:** do not change the name of the project.
+
 #### CONFIGURATION
 
-* create database with the file `database.sql`
-* Edit the values ​​of the constants
+* create database with the file `database.sql`.
+* Edit the values ​​of the constants.
 
 ```go
 const (
@@ -19,4 +26,4 @@ const (
     dbname   = "apirest_users"
 )
 ```
-* Execute `go run main.go`
+* Execute `go run main.go`.
