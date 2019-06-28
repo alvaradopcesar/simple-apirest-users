@@ -10,4 +10,5 @@ CREATE TABLE users (
     paternal VARCHAR(100) NOT NULL,
     maternal VARCHAR(100) NOT NULL,
     email VARCHAR(200) NOT NULL UNIQUE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+);
+
