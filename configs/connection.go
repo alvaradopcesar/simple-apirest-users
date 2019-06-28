@@ -15,8 +15,8 @@ const (
 	dbname   = "apirest_users"
 )
 
-// DatabaseConfig func
-func DatabaseConfig() *sql.DB {
+// ConnectionConfig func
+func ConnectionConfig() *sql.DB {
 	db, err := sql.Open("mysql", fmt.Sprintf("%s:%s@/%s?charset=utf8", user, password, dbname))
 	if err != nil {
 		log.Fatal("Error al conectar a la db: ", err.Error())

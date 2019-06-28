@@ -1,19 +1,20 @@
 package controllers
 
 import (
-	"encoding/json"
 	"log"
 	"net/http"
 
 	"github.com/wilian1808/apirest-users/configs"
+	"github.com/wilian1808/apirest-users/helpers"
 	"github.com/wilian1808/apirest-users/models"
 )
 
 // ReadController func
 func ReadController(w http.ResponseWriter, r *http.Request) {
 	var users []models.User
+	var response models.Response
 
-	db := configs.DatabaseConfig()
+	db := configs.ConnectionConfig()
 	defer db.Close()
 
 	rows, err := db.Query("SELECT * FROM users")
@@ -32,11 +33,9 @@ func ReadController(w http.ResponseWriter, r *http.Request) {
 		users = append(users, user)
 	}
 
-	jsn, err := json.Marshal(users)
-	if err != nil {
-		log.Fatal("Error al convertir a json: ", err.Error())
-		return
-	}
+	response.Code = http.StatusOK
+	response.Message = "datos traidos con exito"
+	response.Data = users
 
-	w.Write(jsn)
+	helpers.ResponseHelper(w, response)
 }

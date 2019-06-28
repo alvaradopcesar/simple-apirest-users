@@ -2,8 +2,8 @@ package routes
 
 import "net/http"
 
-// RouterRoute func
-func RouterRoute() *http.ServeMux {
+// AllRoute func
+func AllRoute() *http.ServeMux {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/delete/", DeleteRoute)
 	mux.HandleFunc("/update/", UpdateRoute)

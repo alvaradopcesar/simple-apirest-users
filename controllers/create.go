@@ -17,7 +17,7 @@ func CreateController(w http.ResponseWriter, r *http.Request) {
 
 	json.NewDecoder(r.Body).Decode(&user)
 
-	db := configs.DatabaseConfig()
+	db := configs.ConnectionConfig()
 	defer db.Close()
 
 	query, err := db.Prepare("INSERT users SET fullname=?, paternal=?, maternal=?, email=?")

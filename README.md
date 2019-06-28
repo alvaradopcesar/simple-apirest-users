@@ -17,7 +17,7 @@ Execute:
 #### CONFIGURATION
 
 * create database with the file `database.sql`.
-* Edit the values ​​of the constants.
+* Edit the values ​​of the constants in the file `connection.go`.
 
 ```go
 const (

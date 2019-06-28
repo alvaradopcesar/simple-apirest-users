@@ -15,7 +15,7 @@ func DeleteController(w http.ResponseWriter, r *http.Request) {
 
 	id := strings.TrimPrefix(r.URL.Path, "/delete/")
 
-	db := configs.DatabaseConfig()
+	db := configs.ConnectionConfig()
 	defer db.Close()
 
 	query, err := db.Prepare("DELETE FROM users WHERE id=?")

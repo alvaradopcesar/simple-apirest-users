@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	mux := routes.RouterRoute()
+	mux := routes.AllRoute()
 	fmt.Println("Serving in port http://localhost:6060")
 	_ = http.ListenAndServe(":6060", mux)
 }

@@ -16,7 +16,7 @@ func UpdateGetController(w http.ResponseWriter, r *http.Request) {
 	id := strings.TrimPrefix(r.URL.Path, "/update/")
 	user := models.User{}
 
-	db := configs.DatabaseConfig()
+	db := configs.ConnectionConfig()
 	defer db.Close()
 
 	row := db.QueryRow("SELECT id, fullname, paternal, maternal, email FROM users WHERE id=?", &id)
@@ -26,13 +26,16 @@ func UpdateGetController(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	jsn, err := json.Marshal(&user)
-	if err != nil {
-		log.Fatal("Error al convertir a json: ", err.Error())
-		return
-	}
+	var response models.Response
+	var users []models.User
 
-	w.Write(jsn)
+	users = append(users, user)
+
+	response.Code = http.StatusOK
+	response.Message = "dato traido con exito"
+	response.Data = users
+
+	helpers.ResponseHelper(w, response)
 }
 
 // UpdatePostController func
@@ -46,7 +49,7 @@ func UpdatePostController(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	db := configs.DatabaseConfig()
+	db := configs.ConnectionConfig()
 	defer db.Close()
 
 	query, err := db.Prepare("UPDATE users SET fullname=?, paternal=?, maternal=?, email=? WHERE id=?")
