@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/wilian1808/apirest-users/routes"
+	"github.com/wilian1808/simple-apirest-users/routes"
 )
 
 func main() {

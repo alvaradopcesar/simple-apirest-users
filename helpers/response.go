@@ -5,7 +5,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/wilian1808/apirest-users/models"
+	"github.com/wilian1808/simple-apirest-users/models"
 )
 
 // ResponseHelper func

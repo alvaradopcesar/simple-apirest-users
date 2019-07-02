@@ -5,9 +5,9 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/wilian1808/apirest-users/configs"
-	"github.com/wilian1808/apirest-users/helpers"
-	"github.com/wilian1808/apirest-users/models"
+	"github.com/wilian1808/simple-apirest-users/configs"
+	"github.com/wilian1808/simple-apirest-users/helpers"
+	"github.com/wilian1808/simple-apirest-users/models"
 )
 
 // DeleteController func
