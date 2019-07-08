@@ -13,8 +13,8 @@ import (
 var Dbmap = connectionConfig()
 
 const (
-	user     = "root"
-	password = "08875346Ap"
+	user     = ""
+	password = ""
 	dbname   = "apirest_users"
 )
 
