@@ -2,25 +2,24 @@ package controllers
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
 	"net/http"
 
-	"github.com/wilian1808/simple-apirest-users/configs"
+	db "github.com/wilian1808/simple-apirest-users/configs"
 	"github.com/wilian1808/simple-apirest-users/helpers"
 	"github.com/wilian1808/simple-apirest-users/models"
 )
 
 // CreateController func
 func CreateController(w http.ResponseWriter, r *http.Request) {
-	var response models.Response
+	// var response models.Response
 	var user models.User
 
 	json.NewDecoder(r.Body).Decode(&user)
+	fmt.Println("hola")
 
-	db := configs.ConnectionConfig()
-	defer db.Close()
-
-	query, err := db.Prepare("INSERT users SET fullname=?, paternal=?, maternal=?, email=?")
+	query, err := db.Dbmap.Prepare("INSERT users SET fullname=?, paternal=?, maternal=?, email=?")
 	if err != nil {
 		log.Fatal("Error al preparar la consulta: ", err.Error())
 		return
@@ -32,7 +31,5 @@ func CreateController(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	response.Code = http.StatusOK
-	response.Message = "Usuario registrado exitosamente"
-	helpers.ResponseHelper(w, response)
+	helpers.ResponseHelper(w, models.Response{Code: http.StatusOK, Message: "Usuario registrado exitosamente"})
 }

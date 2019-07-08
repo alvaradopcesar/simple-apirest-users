@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/wilian1808/simple-apirest-users/configs"
+	db "github.com/wilian1808/simple-apirest-users/configs"
 	"github.com/wilian1808/simple-apirest-users/helpers"
 	"github.com/wilian1808/simple-apirest-users/models"
 )
@@ -15,10 +15,7 @@ func DeleteController(w http.ResponseWriter, r *http.Request) {
 
 	id := strings.TrimPrefix(r.URL.Path, "/delete/")
 
-	db := configs.ConnectionConfig()
-	defer db.Close()
-
-	query, err := db.Prepare("DELETE FROM users WHERE id=?")
+	query, err := db.Dbmap.Prepare("DELETE FROM users WHERE id=?")
 	if err != nil {
 		log.Fatal("Error al preparar la consulta: ", err.Error())
 		return
@@ -30,9 +27,9 @@ func DeleteController(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	var response models.Response
-	response.Code = http.StatusOK
-	response.Message = "Usuario eliminado con exito"
+	// var response models.Response
+	// response.Code = http.StatusOK
+	// response.Message = "Usuario eliminado con exito"
 
-	helpers.ResponseHelper(w, response)
+	helpers.ResponseHelper(w, models.Response{Code: http.StatusOK, Message: "Usuario eliminado con exito"})
 }
